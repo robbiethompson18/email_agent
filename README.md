@@ -1,6 +1,6 @@
 # Email Project
 
-A project for managing and processing emails.
+Automating unsubscribing from emails.
 
 ## Setup
 
@@ -10,4 +10,9 @@ A project for managing and processing emails.
 
 ## Development
 
-Project structure and development guidelines will be added as the project evolves.
+I need to sort out a linter
+
+
+## how to use
+
+Just forward the email you want to unsubscribe from to agent: unsubscribe. It should be able to click on links, but can't yet send unsubscribe emails.

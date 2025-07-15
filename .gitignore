@@ -4,6 +4,9 @@ mcagentagent_api_keys.json
 mcagent2.json   
 token.pickle
 
+# old files I no longer want:
+redundant_*
+
 # Python
 __pycache__/
 *.py[cod]
