@@ -7,7 +7,7 @@ class EmailFinder:
         """Initialize the Gmail API service."""
         self.service = GmailAuthenticator.get_gmail_service(credential_filename)
 
-    def find_unsubscribe_candidates(self, query="agent: unsubscribe", max_results=10):
+    def find_unsubscribe_candidates(self, query, max_results=10):
         """Find emails matching unsubscribe criteria."""
         try:
             print(f"Searching for emails matching: {query}")

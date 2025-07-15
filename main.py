@@ -4,7 +4,7 @@ from unsubscribe_agent import UnsubscribeAgent
 def main():
     # Find emails to unsubscribe from
     finder = EmailFinder("mcagent2.json")
-    candidates = finder.find_unsubscribe_candidates()
+    candidates = finder.find_unsubscribe_candidates("agent: unsubscribe")
     
     if not candidates:
         print("No emails found to unsubscribe from")
