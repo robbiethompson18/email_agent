@@ -1,6 +1,6 @@
 import os
 import requests
-from .openai_agent import OpenAIAgent
+from openai_agent import OpenAIAgent
 import argparse
 
 class UnsubscribeLLMAgent(OpenAIAgent):

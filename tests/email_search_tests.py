@@ -1,8 +1,12 @@
 import pytest
-from src.email_finder import EmailFinder
+import os
+from email_finder import EmailFinder
 
-def basic_test_find_vital_email(query = "unsubscribe"):
-    finder = Email_Finder("keys/mcagent2.json")
+def test_basic_find_vital_email(query = "unsubscribe"):
+    # Get absolute path to keys directory
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    keys_path = os.path.join(project_root, "keys", "mcagent2.json")
+    finder = EmailFinder(keys_path)
     candidates = finder.find_unsubscribe_candidates(query) 
     assert len(candidates) >= 1
 
