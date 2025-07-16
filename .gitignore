@@ -4,6 +4,7 @@ keys/*
 .env.local
 .env.production
 .env.staging
+*token.pickle*
 
 # old files I no longer want:
 redundant_*
