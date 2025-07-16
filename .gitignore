@@ -1,9 +1,5 @@
 # API keys
-client_secret_387008946185-dnf3adh08q5opi5c50dhce3mcrmlvuam.apps.googleusercontent.com.json 
-mcagentagent_api_keys.json
-mcagent2.json   
-token.pickle
-.env
+keys/*
 
 # old files I no longer want:
 redundant_*

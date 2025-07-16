@@ -1,4 +1,5 @@
 from shared_auth import GmailAuthenticator
+import argparse
 
 class EmailFinder:
     """Finds emails that should be unsubscribed from."""
@@ -42,8 +43,13 @@ class EmailFinder:
             return []
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--query', type=str, default='default_value', help = 'string to search for when looking for emails. TODO: make this an LLM prompt?')
+    parser.add_argument('')
+    args = parser.parse_args()
+    print(args.query)
     finder = EmailFinder("mcagent2.json")
-    candidates = finder.find_unsubscribe_candidates()
+    candidates = finder.find_unsubscribe_candidates(args.query)
     
     print(f"\nFound {len(candidates)} candidates for unsubscribing:")
     for candidate in candidates:
