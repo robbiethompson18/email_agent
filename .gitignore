@@ -1,5 +1,9 @@
-# API keys
+# API keys and secrets
 keys/*
+.env
+.env.local
+.env.production
+.env.staging
 
 # old files I no longer want:
 redundant_*
