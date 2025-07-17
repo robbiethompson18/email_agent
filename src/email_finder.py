@@ -1,12 +1,12 @@
-from shared_auth import GmailAuthenticator
+from auth import get_gmail_service
 import argparse
 
 class EmailFinder:
     """Finds emails that should be unsubscribed from."""
     
-    def __init__(self, credential_filename):
+    def __init__(self, credential_filename = ""):
         """Initialize the Gmail API service."""
-        self.service = GmailAuthenticator.get_gmail_service(credential_filename)
+        self.service = get_gmail_service(credential_filename)
 
     def find_unsubscribe_candidates(self, query, max_results=10):
         """Find emails matching unsubscribe criteria."""

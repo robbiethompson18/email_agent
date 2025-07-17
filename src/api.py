@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import uvicorn
+from email_finder import EmailFinder
 
 app = FastAPI(title="Email Unsubscribe API", version="1.0.0")
 
@@ -45,6 +46,8 @@ async def get_unsubscribe_candidates():
     Use existing LLM code to analyze and identify unsubscribe candidates
     Return formatted list for frontend
     """
+    credentials = os.getenv(GMAIL_CREDENTIALS_FILE)
+    email_finder = EmailFinder()
     
     return []
 

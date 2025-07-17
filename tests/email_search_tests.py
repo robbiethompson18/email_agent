@@ -10,4 +10,8 @@ def test_basic_find_vital_email(query = "unsubscribe"):
     candidates = finder.find_unsubscribe_candidates(query) 
     assert len(candidates) >= 1
 
+def test_basic_find_vital_email_auto_keys(query = "unsubscribe"):
+    finder = EmailFinder()
+    candidates = finder.find_unsubscribe_candidates(query) 
+    assert len(candidates) >= 1
 # TODO add more tests when I have more examples

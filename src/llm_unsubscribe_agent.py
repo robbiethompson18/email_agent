@@ -1,9 +1,9 @@
 import os
 import requests
-from openai_agent import OpenAIAgent
+from auth import get_openai_client
 import argparse
 
-class UnsubscribeLLMAgent(OpenAIAgent):
+class UnsubscribeLLMAgent:
     """Uses LLM to find and follow unsubscribe links in emails."""
     
     def __init__(self, api_key=None):
@@ -12,7 +12,7 @@ class UnsubscribeLLMAgent(OpenAIAgent):
         Args:
             api_key (str, optional): OpenAI API key. If not provided, will try to get from env var.
         """
-        super().__init__(api_key)
+        self.client = get_openai_client(api_key)
 
     def find_unsubscribe_link(self, email_body, email_subject=None, email_from=None, list_unsubscribe_header=None):
         """Use LLM to find unsubscribe link from email body.

@@ -1,0 +1,16 @@
+{
+  "name": "email-unsubscribe-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for Email Unsubscribe Manager",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "dev": "tsc --watch",
+    "clean": "rm -rf static/js/dist"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "type": "module"
+}

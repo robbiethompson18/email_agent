@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Unsubscribe Manager</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Email Unsubscribe Manager</h1>
+            <p class="subtitle">Manage your email subscriptions with AI assistance</p>
+        </header>
+
+        <nav class="tab-navigation">
+            <button class="tab-button active" data-tab="candidates">
+                <span class="tab-icon">📧</span>
+                Unsubscribe Candidates
+            </button>
+            <button class="tab-button" data-tab="unsubscribed">
+                <span class="tab-icon">✅</span>
+                Unsubscribed Emails
+            </button>
+        </nav>
+
+        <main class="content">
+            <div id="candidates" class="tab-content active">
+                <div class="empty-state">
+                    <div class="empty-icon">📪</div>
+                    <h3>No candidates found</h3>
+                    <p>Email candidates for unsubscribing will appear here</p>
+                    <button class="primary-button">Scan for Emails</button>
+                </div>
+            </div>
+
+            <div id="unsubscribed" class="tab-content">
+                <div class="empty-state">
+                    <div class="empty-icon">📭</div>
+                    <h3>No unsubscribed emails yet</h3>
+                    <p>Emails you've successfully unsubscribed from will appear here</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../static/js/dist/app.js"></script>
+</body>
+</html>

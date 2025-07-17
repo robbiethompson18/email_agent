@@ -1,5 +1,6 @@
 import pytest
 from llm_unsubscribe_agent import UnsubscribeLLMAgent
+import os
 
 
 # make sure it successfully unsubscribes from that one vital link
@@ -8,7 +9,9 @@ from llm_unsubscribe_agent import UnsubscribeLLMAgent
 # make sure we find the link in the vital email
 def test_find_link_in_vital_email():
     unsub_agent = UnsubscribeLLMAgent()
-    with open("vital_email_body.txt", "r") as file:
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    keys_path = os.path.join(project_root, "tests", "vital_email_body.txt")
+    with open(keys_path, "r") as file:
         body = file.read()
     link = unsub_agent.find_unsubscribe_link(body)
     print(link)
