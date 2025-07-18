@@ -3,7 +3,9 @@ import requests
 from auth import get_openai_client
 import argparse
 
-class UnsubscribeLLMAgent:
+#TODO: handle mailto: links
+# methods aren't static b/c they need api keys
+class UnsubscribeAgent:
     """Uses LLM to find and follow unsubscribe links in emails."""
     
     def __init__(self, api_key=None):
@@ -50,7 +52,7 @@ class UnsubscribeLLMAgent:
             print(f"Error calling OpenAI API: {e}")
             return None
 
-    def attempt_unsubscribe(self, unsubscribe_url):
+    def attempt_unsubscribe_from_link(self, unsubscribe_url):
         """Attempt to follow an unsubscribe URL.
         
         Args:
@@ -74,10 +76,21 @@ class UnsubscribeLLMAgent:
             # Try to follow the unsubscribe link
             response = requests.get(unsubscribe_url)
             print(f"Unsubscribe request status: {response.status_code}")
-            return response.status_code == 200
+            return response.status_code == 200 
         except Exception as e:
             print(f"Error following unsubscribe link: {e}")
             return False
+
+    def attempt_unsubscribe_from_text(self, email_body, email_subject=None, email_from=None, list_unsubscribe_header=None):
+        unsubscribe_url = self.find_unsubscribe_link(email_body, email_subject, email_from, list_unsubscribe_header)
+        # Try to unsubscribe
+        if unsubscribe_url:
+            if self.attempt_unsubscribe_from_link(unsubscribe_url):
+                print("✓ Successfully unsubscribed!")
+            else:
+                print("✗ Could not unsubscribe automatically")
+        else:
+            print("✗ No unsubscribe link found")
 
 if __name__ == '__main__':
     # Example usage
@@ -93,7 +106,7 @@ if __name__ == '__main__':
     api_key = args.api_key or os.environ.get('OPENAI_API_KEY')
     
     # Initialize agent with API key
-    agent = UnsubscribeLLMAgent(api_key=api_key)
+    agent = UnsubscribeAgent(api_key=api_key)
     
     # Example email body
     email_body = """
@@ -123,7 +136,7 @@ if __name__ == '__main__':
     
     if unsubscribe_url:
         print(f"Found unsubscribe URL: {unsubscribe_url}")
-        if agent.attempt_unsubscribe(unsubscribe_url):
+        if agent.attempt_unsubscribe_from_link(unsubscribe_url):
             print("✓ Successfully unsubscribed!")
         else:
             print("✗ Could not unsubscribe automatically")

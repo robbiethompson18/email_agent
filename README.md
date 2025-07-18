@@ -80,6 +80,10 @@ uv run uvicorn src.api:app --reload
 uv run python src/main.py
 ```
 
+**Start the node frontend:**
+npm run watch 
+(from the frontend folder, will continuously compile )
+
 **FastAPI server:**
 ```bash
 uv run uvicorn src.api:app --reload --port 8000
@@ -98,7 +102,7 @@ email_project/
 ├── src/                    # Source code
 │   ├── api.py             # FastAPI server
 │   ├── email_finder.py    # Email search functionality
-│   ├── llm_unsubscribe_agent.py  # LLM-based unsubscribing
+│   ├── unsubscribe_agent.py   # LLM-based unsubscribing
 │   ├── openai_agent.py    # OpenAI API wrapper
 │   └── shared_auth.py     # Gmail authentication
 ├── tests/                 # Test files

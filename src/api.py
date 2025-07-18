@@ -4,12 +4,13 @@ from pydantic import BaseModel
 from typing import List, Optional
 import uvicorn
 from email_finder import EmailFinder
+from unsubscribe_agent import UnsubscribeAgent
 
 app = FastAPI(title="Email Unsubscribe API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["*"],  # Allow all origins for development
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -46,17 +47,16 @@ async def get_unsubscribe_candidates():
     Use existing LLM code to analyze and identify unsubscribe candidates
     Return formatted list for frontend
     """
-    credentials = os.getenv(GMAIL_CREDENTIALS_FILE)
     email_finder = EmailFinder()
-    
-    return []
+    return email_finder.find_unsubscribe_candidates(query = "unsubscribe")  
 
 @app.post("/emails/{email_id}/unsubscribe", response_model=UnsubscribeResult)
 async def unsubscribe_from_email(email_id: str):
     """
     Use existing LLM agent to actually unsubscribe
     """
-    # TODO: Implement with existing LLM unsubscribe logic
+    unsub_agent = UnsubscribeAgent()
+    
     return UnsubscribeResult(
         success=False,
         message="Not implemented yet"

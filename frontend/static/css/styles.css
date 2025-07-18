@@ -163,6 +163,125 @@ body {
     transform: translateY(0);
 }
 
+/* Email Lists and Cards */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f3f4f6;
+}
+
+.content-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.emails-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.email-card {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.email-card:hover {
+    background: #f1f5f9;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.email-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.email-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+    flex: 1;
+    margin-right: 15px;
+}
+
+.email-date {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.email-sender {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.email-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.unsubscribe-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.unsubscribe-btn:hover {
+    background: #b91c1c;
+    transform: translateY(-1px);
+}
+
+.skip-btn {
+    background: #6b7280;
+    color: white;
+}
+
+.skip-btn:hover {
+    background: #4b5563;
+    transform: translateY(-1px);
+}
+
+.status-indicator {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-indicator.success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-indicator.skipped {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
@@ -188,5 +307,29 @@ body {
     
     .empty-state {
         padding: 40px 15px;
+    }
+    
+    .content-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .email-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .email-header h3 {
+        margin-right: 0;
+    }
+    
+    .email-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .action-button {
+        width: 100%;
     }
 }

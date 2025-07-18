@@ -24,7 +24,7 @@ def get_openai_client(api_key=None):
     load_dotenv()
     
     # Get API key with priority: 1) passed param, 2) env var, 3) .env file
-    openai_api_key = api_key or os.environ.get("OPENAI_API_KEY") or os.getenv("OPENAI_API_KEY")
+    openai_api_key = api_key or os.getenv("OPENAI_API_KEY")
     
     if not openai_api_key:
         print("Error: OPENAI_API_KEY not found. Please provide it as a parameter or set it as an environment variable.")
